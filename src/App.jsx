@@ -17,17 +17,21 @@ const App = () => {
         minHeight: '100vh',
         width: '100%'
       }}>
-        <div style={{
-          maxWidth: '1280px',
-          margin: '0 auto',
-          padding: '0 var(--space-md)'
-        }}>
+        <div
+          className="px-4 md:px-8"
+          style={{
+            maxWidth: '1280px',
+            margin: '0 auto',
+          }}
+        >
           <Navigation />
-          <div style={{
-            height: '1px',
-            background: 'var(--c-border)',
-            margin: '0 calc(-1 * var(--space-md))'
-          }}></div>
+          <div
+            className="-mx-4 md:-mx-8"
+            style={{
+              height: '1px',
+              background: 'var(--c-border)',
+            }}
+          ></div>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/payments" element={<PaymentsPage />} />

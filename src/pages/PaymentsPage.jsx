@@ -12,7 +12,7 @@ const ActivityPanel = () => {
         overflow: "hidden",
         boxShadow: "0 4px 12px rgba(0,0,0,0.03)",
         height: "100%",
-        minHeight: "400px",
+        minHeight: "300px",
         display: "flex",
         flexDirection: "column",
       }}
@@ -24,6 +24,7 @@ const ActivityPanel = () => {
           display: "flex",
           gap: "16px",
           background: "#fff",
+          flexWrap: "wrap",
         }}
       >
         {["Activity", "Exceptions", "Reconciliation"].map((tab) => (
@@ -47,13 +48,15 @@ const ActivityPanel = () => {
           </span>
         ))}
       </div>
-      <div style={{ padding: "20px", flex: 1, overflowY: "auto" }}>
+      <div style={{ padding: "16px", flex: 1, overflowY: "auto" }}>
         <div
           style={{
             marginBottom: "20px",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "flex-end",
+            flexWrap: "wrap",
+            gap: "8px",
           }}
         >
           <div>
@@ -69,7 +72,7 @@ const ActivityPanel = () => {
             >
               Volume (30d)
             </div>
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: "1.5rem" }}>
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: "1.25rem" }}>
               $24,592,100.00
             </div>
           </div>
@@ -137,11 +140,13 @@ const ActivityPanel = () => {
                 padding: "12px 0",
                 borderBottom: idx === 3 ? "none" : "1px solid #EAEAEA",
                 fontFamily: "var(--font-mono)",
-                fontSize: "0.75rem",
+                fontSize: "0.7rem",
                 alignItems: "center",
+                flexWrap: "wrap",
+                gap: "8px",
               }}
             >
-              <span>
+              <span style={{ minWidth: 0, overflow: "hidden", textOverflow: "ellipsis" }}>
                 PAY-{item.id} • {item.desc}
               </span>
               <span
@@ -150,6 +155,7 @@ const ActivityPanel = () => {
                   borderRadius: "12px",
                   fontSize: "0.65rem",
                   textTransform: "uppercase",
+                  flexShrink: 0,
                   background:
                     item.color === "green"
                       ? "#E0F2E9"
@@ -185,7 +191,7 @@ const DashboardPanel = () => {
         borderRadius: "var(--radius-sm)",
         overflow: "hidden",
         boxShadow: "0 4px 12px rgba(0,0,0,0.03)",
-        minHeight: "400px",
+        minHeight: "300px",
         display: "flex",
         flexDirection: "column",
       }}
@@ -198,9 +204,11 @@ const DashboardPanel = () => {
           padding: "12px 16px",
           display: "flex",
           background: "#fff",
+          flexWrap: "wrap",
+          gap: "8px",
         }}
       >
-        <div style={{ display: "flex", gap: "12px" }}>
+        <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
           {["All", "Pending", "Failed"].map((tab) => (
             <span
               key={tab}
@@ -231,14 +239,16 @@ const DashboardPanel = () => {
           }}
         />
       </div>
-      <div style={{ padding: "0" }}>
+      <div style={{ padding: "0", overflowX: "auto" }}>
         <div
+          className="hidden md:grid"
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 2fr 1fr 1.5fr",
             padding: "12px 20px",
             borderBottom: "1px solid #eee",
             background: "#fcfcfc",
+            minWidth: "400px",
           }}
         >
           {["DATE", "DESCRIPTION", "AMOUNT", "RECONCILIATION"].map((header) => (
@@ -265,20 +275,20 @@ const DashboardPanel = () => {
         ].map((row, idx) => (
           <div
             key={idx}
+            className="grid grid-cols-2 md:grid-cols-[1fr_2fr_1fr_1.5fr]"
             style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 2fr 1fr 1.5fr",
-              padding: "16px 20px",
+              padding: "12px 20px",
               borderBottom: idx === 4 ? "none" : "1px solid #f0f0f0",
               alignItems: "center",
               fontFamily: "var(--font-mono)",
               fontSize: "0.75rem",
+              gap: "8px",
             }}
           >
             <span style={{ color: "#666" }}>{row.date}</span>
-            <span>{row.desc}</span>
-            <span>{row.amount}</span>
-            <div>
+            <span className="truncate">{row.desc}</span>
+            <span className="hidden md:block">{row.amount}</span>
+            <div className="hidden md:block">
               <span
                 style={{
                   padding: "2px 8px",
@@ -322,15 +332,12 @@ const PaymentsPage = () => {
   return (
     <>
       <header
+        className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-16 items-center"
         style={{
           padding: "var(--space-xl) 0",
-          display: "grid",
-          gridTemplateColumns: "1fr 1.1fr",
-          gap: "var(--space-lg)",
-          alignItems: "center",
         }}
       >
-        <div style={{ paddingRight: "var(--space-md)" }}>
+        <div className="pr-0 lg:pr-8">
           <span
             style={{
               fontFamily: "var(--font-mono)",
@@ -345,10 +352,10 @@ const PaymentsPage = () => {
             Product / Payment Hub
           </span>
           <h1
+            className="text-2xl md:text-4xl"
             style={{
               fontFamily: "var(--font-mono)",
               fontWeight: 400,
-              fontSize: "2.5rem",
               lineHeight: 1.1,
               marginBottom: "var(--space-sm)",
               letterSpacing: "-0.02em",
@@ -358,8 +365,8 @@ const PaymentsPage = () => {
             A payments hub for teams that move money_
           </h1>
           <p
+            className="text-sm md:text-base"
             style={{
-              fontSize: "1.1rem",
               maxWidth: "600px",
               color: "var(--c-text-secondary)",
               marginBottom: "var(--space-sm)",
@@ -377,6 +384,7 @@ const PaymentsPage = () => {
             ].map((item, idx) => (
               <li
                 key={idx}
+                className="text-sm"
                 style={{
                   marginBottom: "var(--space-xs)",
                   paddingLeft: "1.2rem",
@@ -404,12 +412,11 @@ const PaymentsPage = () => {
 
       <section>
         <h2
+          className="text-lg md:text-xl mt-16 md:mt-24"
           style={{
             fontFamily: "var(--font-mono)",
             fontWeight: 400,
-            fontSize: "1.25rem",
             marginBottom: "var(--space-lg)",
-            marginTop: "120px",
             borderBottom: "1px solid var(--c-border)",
             paddingBottom: "var(--space-xs)",
             textTransform: "uppercase",
@@ -420,10 +427,10 @@ const PaymentsPage = () => {
           01. Challenges
         </h2>
         <h3
+          className="text-xl md:text-2xl"
           style={{
             fontFamily: "var(--font-mono)",
             fontWeight: 400,
-            fontSize: "1.75rem",
             marginBottom: "var(--space-sm)",
             lineHeight: 1.2,
             color: "var(--c-text-primary)",
@@ -432,9 +439,9 @@ const PaymentsPage = () => {
           Eliminate hidden payment complexity.
         </h3>
         <p
+          className="text-sm md:text-base"
           style={{
             color: "var(--c-text-secondary)",
-            fontSize: "1rem",
             marginBottom: "var(--space-sm)",
             maxWidth: "600px",
           }}
@@ -444,12 +451,7 @@ const PaymentsPage = () => {
         </p>
 
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "var(--space-md)",
-            marginTop: "var(--space-md)",
-          }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mt-8"
         >
           {[
             {
@@ -504,7 +506,7 @@ const PaymentsPage = () => {
               >
                 {card.title}
               </h3>
-              <p style={{ fontSize: "0.9rem", color: "var(--c-text-secondary)" }}>
+              <p className="text-sm" style={{ color: "var(--c-text-secondary)" }}>
                 {card.desc}
               </p>
             </div>
@@ -514,12 +516,11 @@ const PaymentsPage = () => {
 
       <section>
         <h2
+          className="text-lg md:text-xl mt-16 md:mt-24"
           style={{
             fontFamily: "var(--font-mono)",
             fontWeight: 400,
-            fontSize: "1.25rem",
             marginBottom: "var(--space-lg)",
-            marginTop: "120px",
             borderBottom: "1px solid var(--c-border)",
             paddingBottom: "var(--space-xs)",
             textTransform: "uppercase",
@@ -530,18 +531,14 @@ const PaymentsPage = () => {
           02. Dashboard
         </h2>
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "var(--space-lg)",
-          }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16"
         >
-          <div style={{ paddingRight: "var(--space-md)" }}>
+          <div className="pr-0 lg:pr-8">
             <h3
+              className="text-xl md:text-2xl"
               style={{
                 fontFamily: "var(--font-mono)",
                 fontWeight: 400,
-                fontSize: "1.75rem",
                 marginBottom: "var(--space-sm)",
                 lineHeight: 1.2,
                 color: "var(--c-text-primary)",
@@ -550,9 +547,9 @@ const PaymentsPage = () => {
               A dashboard to run payment operations.
             </h3>
             <p
+              className="text-sm md:text-base"
               style={{
                 color: "var(--c-text-secondary)",
-                fontSize: "1rem",
                 marginBottom: "var(--space-sm)",
                 maxWidth: "600px",
               }}
@@ -569,6 +566,7 @@ const PaymentsPage = () => {
               ].map((item, idx) => (
                 <li
                   key={idx}
+                  className="text-sm"
                   style={{
                     marginBottom: "var(--space-xs)",
                     paddingLeft: "1.2rem",
@@ -597,12 +595,11 @@ const PaymentsPage = () => {
 
       <section>
         <h2
+          className="text-lg md:text-xl mt-16 md:mt-24"
           style={{
             fontFamily: "var(--font-mono)",
             fontWeight: 400,
-            fontSize: "1.25rem",
             marginBottom: "var(--space-lg)",
-            marginTop: "120px",
             borderBottom: "1px solid var(--c-border)",
             paddingBottom: "var(--space-xs)",
             textTransform: "uppercase",
@@ -613,10 +610,10 @@ const PaymentsPage = () => {
           03. How It Works
         </h2>
         <h3
+          className="text-xl md:text-2xl"
           style={{
             fontFamily: "var(--font-mono)",
             fontWeight: 400,
-            fontSize: "1.75rem",
             marginBottom: "var(--space-sm)",
             lineHeight: 1.2,
             color: "var(--c-text-primary)",
@@ -626,12 +623,7 @@ const PaymentsPage = () => {
         </h3>
 
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "var(--space-md)",
-            marginTop: "var(--space-md)",
-          }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-8"
         >
           {[
             {
@@ -677,7 +669,7 @@ const PaymentsPage = () => {
               >
                 {step.title}
               </h3>
-              <p style={{ color: "var(--c-text-secondary)" }}>{step.desc}</p>
+              <p className="text-sm" style={{ color: "var(--c-text-secondary)" }}>{step.desc}</p>
             </div>
           ))}
         </div>
@@ -685,12 +677,11 @@ const PaymentsPage = () => {
 
       <section>
         <h2
+          className="text-lg md:text-xl mt-16 md:mt-24"
           style={{
             fontFamily: "var(--font-mono)",
             fontWeight: 400,
-            fontSize: "1.25rem",
             marginBottom: "var(--space-lg)",
-            marginTop: "120px",
             borderBottom: "1px solid var(--c-border)",
             paddingBottom: "var(--space-xs)",
             textTransform: "uppercase",
@@ -701,10 +692,10 @@ const PaymentsPage = () => {
           04. Platform
         </h2>
         <h3
+          className="text-xl md:text-2xl"
           style={{
             fontFamily: "var(--font-mono)",
             fontWeight: 400,
-            fontSize: "1.75rem",
             marginBottom: "var(--space-sm)",
             lineHeight: 1.2,
             color: "var(--c-text-primary)",
@@ -714,12 +705,7 @@ const PaymentsPage = () => {
         </h3>
 
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "var(--space-md)",
-            marginTop: "var(--space-md)",
-          }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mt-8"
         >
           {[
             {
@@ -887,6 +873,7 @@ const PaymentsPage = () => {
                 {feature.items.map((item, i) => (
                   <li
                     key={i}
+                    className="text-sm"
                     style={{
                       marginBottom: "var(--space-xs)",
                       paddingLeft: "1.2rem",
@@ -914,12 +901,11 @@ const PaymentsPage = () => {
 
       <section>
         <h2
+          className="text-lg md:text-xl mt-16 md:mt-24"
           style={{
             fontFamily: "var(--font-mono)",
             fontWeight: 400,
-            fontSize: "1.25rem",
             marginBottom: "var(--space-lg)",
-            marginTop: "120px",
             borderBottom: "1px solid var(--c-border)",
             paddingBottom: "var(--space-xs)",
             textTransform: "uppercase",
@@ -930,18 +916,14 @@ const PaymentsPage = () => {
           05. Integrations
         </h2>
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "var(--space-lg)",
-          }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16"
         >
           <div>
             <h3
+              className="text-xl md:text-2xl"
               style={{
                 fontFamily: "var(--font-mono)",
                 fontWeight: 400,
-                fontSize: "1.75rem",
                 marginBottom: "var(--space-sm)",
                 lineHeight: 1.2,
                 color: "var(--c-text-primary)",
@@ -950,9 +932,9 @@ const PaymentsPage = () => {
               Explore a growing network of direct bank integrations.
             </h3>
             <p
+              className="text-sm md:text-base"
               style={{
                 color: "var(--c-text-secondary)",
-                fontSize: "1rem",
                 marginBottom: "var(--space-sm)",
                 maxWidth: "600px",
               }}
@@ -968,6 +950,7 @@ const PaymentsPage = () => {
               ].map((item, idx) => (
                 <li
                   key={idx}
+                  className="text-sm"
                   style={{
                     marginBottom: "var(--space-xs)",
                     paddingLeft: "1.2rem",
@@ -988,29 +971,6 @@ const PaymentsPage = () => {
                 </li>
               ))}
             </ul>
-            <a
-              href="#"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "12px 24px",
-                borderRadius: "var(--radius-pill)",
-                fontSize: "0.75rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                fontWeight: 600,
-                textDecoration: "none",
-                cursor: "pointer",
-                transition: "all 0.2s",
-                backgroundColor: "transparent",
-                color: "var(--c-text-primary)",
-                border: "1px solid var(--c-border)",
-                marginTop: "var(--space-sm)",
-              }}
-            >
-              View bank coverage
-            </a>
           </div>
 
           <div
@@ -1031,14 +991,14 @@ const PaymentsPage = () => {
                   key={bank}
                   style={{
                     fontFamily: "var(--font-mono)",
-                    fontSize: "0.85em",
+                    fontSize: "0.75em",
                     textTransform: "uppercase",
                     letterSpacing: "0.05em",
                     color: "var(--c-text-primary)",
                     border: "1px solid #ddd",
-                    padding: "8px 16px",
+                    padding: "8px 12px",
                     background: "white",
-                    minWidth: "100px",
+                    minWidth: "80px",
                     textAlign: "center",
                   }}
                 >
@@ -1052,12 +1012,11 @@ const PaymentsPage = () => {
 
       <section>
         <h2
+          className="text-lg md:text-xl mt-16 md:mt-24"
           style={{
             fontFamily: "var(--font-mono)",
             fontWeight: 400,
-            fontSize: "1.25rem",
             marginBottom: "var(--space-lg)",
-            marginTop: "120px",
             borderBottom: "1px solid var(--c-border)",
             paddingBottom: "var(--space-xs)",
             textTransform: "uppercase",
@@ -1068,10 +1027,10 @@ const PaymentsPage = () => {
           06. Use Cases
         </h2>
         <h3
+          className="text-xl md:text-2xl"
           style={{
             fontFamily: "var(--font-mono)",
             fontWeight: 400,
-            fontSize: "1.75rem",
             marginBottom: "var(--space-sm)",
             lineHeight: 1.2,
             color: "var(--c-text-primary)",
@@ -1081,12 +1040,7 @@ const PaymentsPage = () => {
         </h3>
 
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: "var(--space-md)",
-            marginTop: "var(--space-md)",
-          }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mt-8"
         >
           {[
             {
@@ -1128,21 +1082,20 @@ const PaymentsPage = () => {
               >
                 {useCase.title}
               </h3>
-              <p style={{ color: "var(--c-text-secondary)" }}>{useCase.desc}</p>
+              <p className="text-sm" style={{ color: "var(--c-text-secondary)" }}>{useCase.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
       <footer
+        className="flex flex-col md:flex-row justify-between items-center md:items-start gap-4 text-center md:text-left"
         style={{
           padding: "var(--space-xl) 0 var(--space-md)",
           borderTop: "1px solid var(--c-border)",
           marginTop: "var(--space-xl)",
           fontFamily: "var(--font-mono)",
           fontSize: "0.7rem",
-          display: "flex",
-          justifyContent: "space-between",
           color: "var(--c-text-secondary)",
         }}
       >

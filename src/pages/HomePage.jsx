@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Tile, StepItem } from "../components/common";
+import { Card, Tile, StepItem } from "../components/common";
 import { customStyles } from "../styles/customStyles";
 
 const HomePage = () => {
@@ -9,16 +9,16 @@ const HomePage = () => {
         <span className="block font-mono text-sm uppercase tracking-wider text-black mb-2">
           Infrastructure V.1.0
         </span>
-        <h1 className="font-mono text-4xl leading-tight mb-4 tracking-tight">
+        <h1 className="font-mono text-2xl md:text-4xl leading-tight mb-4 tracking-tight">
           Move money at scale—without the operational drag_
         </h1>
-        <p className="text-gray-600 mb-4" style={customStyles.heroSubtext}>
+        <p className="text-gray-600 mb-4 text-sm md:text-base" style={{ maxWidth: "600px" }}>
           Payments infrastructure for product teams, with tracking, issue
           resolution, and reconciliation built in—so you know what happened
           without manual chasing.
         </p>
 
-        <ul className="list-none mb-8" style={customStyles.heroList}>
+        <ul className="list-none mb-8">
           <li className="relative pl-8 mb-2 text-gray-600 text-sm">
             <span className="absolute left-0 text-black">—</span>
             Launch payments faster across more bank partners
@@ -37,24 +37,15 @@ const HomePage = () => {
             Reconcile outcomes to bank activity for finance confidence
           </li>
         </ul>
-
-        <div style={customStyles.heroActions}>
-          <Button variant="primary" href="#">
-            Talk to Sales
-          </Button>
-          <Button variant="secondary" href="#">
-            View Product
-          </Button>
-        </div>
       </header>
 
       <hr style={customStyles.hr} />
 
       <section>
-        <h2 className="font-mono text-xl mb-4 mt-16 border-b border-gray-300 pb-2">
+        <h2 className="font-mono text-lg md:text-xl mb-4 mt-12 md:mt-16 border-b border-gray-300 pb-2">
           01. Product Suite
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8 md:my-16">
           <Card
             label="PAYMENTS"
             title="Infrastructure for teams that move money"
@@ -79,10 +70,10 @@ const HomePage = () => {
       </section>
 
       <section>
-        <h2 className="font-mono text-xl mb-4 mt-16 border-b border-gray-300 pb-2">
+        <h2 className="font-mono text-lg md:text-xl mb-4 mt-12 md:mt-16 border-b border-gray-300 pb-2">
           02. The Problem
         </h2>
-        <h3 style={customStyles.problemTitle}>
+        <h3 className="font-mono text-xl md:text-2xl leading-tight mb-4">
           Payments don't fail at initiation.{" "}
           <span
             className="inline px-1"
@@ -91,12 +82,12 @@ const HomePage = () => {
             They fail in the messy middle.
           </span>
         </h3>
-        <p className="text-gray-600 mb-4">
+        <p className="text-gray-600 mb-4 text-sm md:text-base">
           Built for the full journey: send money, track it, resolve issues,
           reconcile outcomes, and produce finance-ready records.
         </p>
 
-        <div className="grid gap-8 mt-8">
+        <div className="grid gap-6 md:gap-8 mt-8">
           <Tile
             title="Fewer escalations"
             description="Faster answers when it says successful isn't true at the bank."
@@ -113,7 +104,7 @@ const HomePage = () => {
       </section>
 
       <section>
-        <h2 className="font-mono text-xl mb-4 mt-16 border-b border-gray-300 pb-2">
+        <h2 className="font-mono text-lg md:text-xl mb-4 mt-12 md:mt-16 border-b border-gray-300 pb-2">
           03. How It Works
         </h2>
         <div>
@@ -131,7 +122,7 @@ const HomePage = () => {
       </section>
 
       <section>
-        <h2 className="font-mono text-xl mb-4 mt-16 border-b border-gray-300 pb-2">
+        <h2 className="font-mono text-lg md:text-xl mb-4 mt-12 md:mt-16 border-b border-gray-300 pb-2">
           04. Novem connects directly to your bank.
         </h2>
         <ul className="list-none mb-4 mt-8">
@@ -152,10 +143,10 @@ const HomePage = () => {
       </section>
 
       <section>
-        <h2 className="font-mono text-xl mb-4 mt-16 border-b border-gray-300 pb-2">
+        <h2 className="font-mono text-lg md:text-xl mb-4 mt-12 md:mt-16 border-b border-gray-300 pb-2">
           05. Developers
         </h2>
-        <div className="bg-gray-50 border border-gray-300 rounded p-8 font-mono text-xs text-gray-600 overflow-x-auto my-8">
+        <div className="bg-gray-50 border border-gray-300 rounded p-4 md:p-8 font-mono text-xs text-gray-600 overflow-x-auto my-8">
           <span className="block leading-relaxed">
             <span className="text-black">const</span> payment ={" "}
             <span className="text-black">await</span> client.payments.create(
@@ -205,10 +196,10 @@ const HomePage = () => {
       </section>
 
       <section>
-        <h2 className="font-mono text-xl mb-4 mt-16 border-b border-gray-300 pb-2">
+        <h2 className="font-mono text-lg md:text-xl mb-4 mt-12 md:mt-16 border-b border-gray-300 pb-2">
           06. Finance
         </h2>
-        <div className="my-16">
+        <div className="my-8 md:my-16">
           <h3 className="font-mono text-base font-semibold mb-2">
             Answers, not excuses.
           </h3>
@@ -229,23 +220,21 @@ const HomePage = () => {
         </div>
       </section>
 
-      <div className="my-24 py-16 border-t border-gray-300 text-center">
-        <h1
-          className="font-mono leading-tight mb-4"
-          style={customStyles.footerCtaTitle}
-        >
-          Move money at scale_
-        </h1>
-        <p className="text-gray-600 mb-4">
-          Talk to sales to see how payments, reconciliation, and cash management
-          fit together.
-        </p>
-        <div style={customStyles.footerCtaActions}>
-          <Button variant="primary" href="#">
-            Talk to Sales
-          </Button>
-        </div>
-      </div>
+      <footer
+        className="responsive-footer"
+        style={{
+          padding: "var(--space-xl) 0 var(--space-md)",
+          borderTop: "1px solid var(--c-border)",
+          marginTop: "var(--space-xl)",
+          fontFamily: "var(--font-mono)",
+          fontSize: "0.7rem",
+          color: "var(--c-text-secondary)",
+        }}
+      >
+        <div>© 2026 Novem</div>
+        <div>V.1.0.4 BUILD_STABLE</div>
+        <div>TERMS / PRIVACY / API_STATUS</div>
+      </footer>
     </>
   );
 };
