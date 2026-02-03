@@ -9,7 +9,7 @@ const Navigation = () => {
     return {
       textDecoration: "none",
       color: isActive ? "var(--c-text-primary)" : "var(--c-text-secondary)",
-      fontSize: "0.8rem",
+      fontSize: "0.75rem",
       textTransform: "uppercase",
       letterSpacing: "0.05em",
       fontFamily: "var(--font-mono)",
@@ -22,9 +22,11 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="py-8 mb-0 flex justify-between items-center border-b border-transparent">
-      <div className="font-bold tracking-wider">Novem</div>
-      <div className="flex gap-8">
+    <nav className="py-4 md:py-8 mb-0 flex justify-between items-center border-b border-transparent">
+      <Link to="/" className="font-bold tracking-wider text-sm md:text-base no-underline text-inherit">
+        Novem
+      </Link>
+      <div className="flex gap-4 md:gap-8">
         <Link to="/payments" style={navLinkStyle("/payments")}>
           Payments
         </Link>

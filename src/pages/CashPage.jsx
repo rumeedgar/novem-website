@@ -5,15 +5,12 @@ const CashPage = () => {
   return (
     <>
       <header
+        className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-16 items-start"
         style={{
           padding: "var(--space-xl) 0",
-          display: "grid",
-          gridTemplateColumns: "1.1fr 0.9fr",
-          gap: "var(--space-xl)",
-          alignItems: "start",
         }}
       >
-        <div style={{ paddingRight: "var(--space-md)" }}>
+        <div className="pr-0 lg:pr-8">
           <span
             style={{
               fontFamily: "var(--font-mono)",
@@ -28,11 +25,11 @@ const CashPage = () => {
             Product / Cash
           </span>
           <h1
+            className="text-2xl md:text-4xl"
             style={{
               fontFamily: "var(--font-mono)",
               fontWeight: 400,
               color: "var(--c-text-primary)",
-              fontSize: "2.5rem",
               lineHeight: 1.1,
               marginBottom: "var(--space-sm)",
               letterSpacing: "-0.02em",
@@ -41,9 +38,9 @@ const CashPage = () => {
             All your bank accounts in one place_
           </h1>
           <p
+            className="text-sm md:text-base"
             style={{
               color: "var(--c-text-secondary)",
-              fontSize: "1.1rem",
               marginBottom: "var(--space-sm)",
               maxWidth: "600px",
             }}
@@ -64,6 +61,7 @@ const CashPage = () => {
             ].map((item, idx) => (
               <li
                 key={idx}
+                className="text-sm"
                 style={{
                   marginBottom: "var(--space-xs)",
                   paddingLeft: "1.2rem",
@@ -91,13 +89,12 @@ const CashPage = () => {
 
       <section>
         <h2
+          className="text-lg md:text-xl mt-16 md:mt-24"
           style={{
             fontFamily: "var(--font-mono)",
             fontWeight: 400,
             color: "var(--c-text-primary)",
-            fontSize: "1.25rem",
             marginBottom: "var(--space-lg)",
-            marginTop: "120px",
             borderBottom: "1px solid var(--c-border)",
             paddingBottom: "var(--space-xs)",
             textTransform: "uppercase",
@@ -108,8 +105,8 @@ const CashPage = () => {
         </h2>
         <div style={{ marginBottom: "var(--space-md)" }}>
           <h3
+            className="text-xl md:text-2xl"
             style={{
-              fontSize: "1.5rem",
               marginBottom: "var(--space-sm)",
               textTransform: "none",
               fontFamily: "var(--font-sans)",
@@ -118,19 +115,14 @@ const CashPage = () => {
           >
             One platform to manage every bank account your business uses.
           </h3>
-          <p style={{ maxWidth: "700px", color: "var(--c-text-secondary)" }}>
+          <p className="text-sm md:text-base" style={{ maxWidth: "700px", color: "var(--c-text-secondary)" }}>
             Forget tokens, portals, and scattered data. Track balances, move
             funds, and reconcile from a single workspace.
           </p>
         </div>
 
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "var(--space-lg)",
-            marginTop: "var(--space-md)",
-          }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 mt-8"
         >
           <div>
             <span
@@ -155,12 +147,12 @@ const CashPage = () => {
               ].map((item, idx) => (
                 <li
                   key={idx}
+                  className="text-sm"
                   style={{
                     marginBottom: "var(--space-xs)",
                     paddingLeft: "1.5rem",
                     position: "relative",
                     color: "var(--c-text-secondary)",
-                    fontSize: "0.95rem",
                   }}
                 >
                   <span
@@ -178,9 +170,9 @@ const CashPage = () => {
             </ul>
           </div>
           <div
+            className="border-t md:border-t-0 md:border-l pt-6 md:pt-0 md:pl-8"
             style={{
-              borderLeft: "1px solid var(--c-border)",
-              paddingLeft: "var(--space-md)",
+              borderColor: "var(--c-border)",
             }}
           >
             <span
@@ -204,12 +196,12 @@ const CashPage = () => {
               ].map((item, idx) => (
                 <li
                   key={idx}
+                  className="text-sm"
                   style={{
                     marginBottom: "var(--space-xs)",
                     paddingLeft: "1.5rem",
                     position: "relative",
                     color: "var(--c-text-secondary)",
-                    fontSize: "0.95rem",
                   }}
                 >
                   <span
@@ -228,34 +220,16 @@ const CashPage = () => {
             </ul>
           </div>
         </div>
-
-        <div style={{ marginTop: "var(--space-md)" }}>
-          <a
-            href="#capabilities"
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.85em",
-              textTransform: "uppercase",
-              letterSpacing: "0.05em",
-              color: "var(--c-text-primary)",
-              textDecoration: "none",
-              borderBottom: "1px solid currentColor",
-            }}
-          >
-            Explore Cash →
-          </a>
-        </div>
       </section>
 
       <section id="capabilities">
         <h2
+          className="text-lg md:text-xl mt-16 md:mt-24"
           style={{
             fontFamily: "var(--font-mono)",
             fontWeight: 400,
             color: "var(--c-text-primary)",
-            fontSize: "1.25rem",
             marginBottom: "var(--space-lg)",
-            marginTop: "120px",
             borderBottom: "1px solid var(--c-border)",
             paddingBottom: "var(--space-xs)",
             textTransform: "uppercase",
@@ -265,11 +239,7 @@ const CashPage = () => {
           02. Capabilities
         </h2>
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "var(--space-md)",
-          }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8"
         >
           <div
             style={{
@@ -293,7 +263,7 @@ const CashPage = () => {
             >
               See cash positions
             </h3>
-            <p style={{ color: "var(--c-text-secondary)" }}>
+            <p className="text-sm" style={{ color: "var(--c-text-secondary)" }}>
               View balances across every account and entity—current and
               historical.
             </p>
@@ -321,7 +291,7 @@ const CashPage = () => {
             >
               Move funds
             </h3>
-            <p style={{ color: "var(--c-text-secondary)" }}>
+            <p className="text-sm" style={{ color: "var(--c-text-secondary)" }}>
               Move money between accounts from one place (single or bulk).
             </p>
           </div>
@@ -348,7 +318,7 @@ const CashPage = () => {
             >
               Reconcile automatically
             </h3>
-            <p style={{ color: "var(--c-text-secondary)" }}>
+            <p className="text-sm" style={{ color: "var(--c-text-secondary)" }}>
               Match activity to what the bank reports so reporting reflects
               reality.
             </p>
@@ -358,13 +328,12 @@ const CashPage = () => {
 
       <section>
         <h2
+          className="text-lg md:text-xl mt-16 md:mt-24"
           style={{
             fontFamily: "var(--font-mono)",
             fontWeight: 400,
             color: "var(--c-text-primary)",
-            fontSize: "1.25rem",
             marginBottom: "var(--space-lg)",
-            marginTop: "120px",
             borderBottom: "1px solid var(--c-border)",
             paddingBottom: "var(--space-xs)",
             textTransform: "uppercase",
@@ -374,10 +343,8 @@ const CashPage = () => {
           03. How it Works
         </h2>
         <div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: "var(--space-md)",
             counterReset: "steps",
           }}
         >
@@ -431,7 +398,7 @@ const CashPage = () => {
               >
                 {step.title}
               </h3>
-              <p style={{ color: "var(--c-text-secondary)" }}>{step.desc}</p>
+              <p className="text-sm" style={{ color: "var(--c-text-secondary)" }}>{step.desc}</p>
             </div>
           ))}
         </div>
@@ -439,13 +406,12 @@ const CashPage = () => {
 
       <section>
         <h2
+          className="text-lg md:text-xl mt-16 md:mt-24"
           style={{
             fontFamily: "var(--font-mono)",
             fontWeight: 400,
             color: "var(--c-text-primary)",
-            fontSize: "1.25rem",
             marginBottom: "var(--space-lg)",
-            marginTop: "120px",
             borderBottom: "1px solid var(--c-border)",
             paddingBottom: "var(--space-xs)",
             textTransform: "uppercase",
@@ -455,16 +421,12 @@ const CashPage = () => {
           04. Integrations
         </h2>
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.5fr 1fr",
-            gap: "var(--space-lg)",
-          }}
+          className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-8 lg:gap-16"
         >
           <div>
             <h3
+              className="text-lg md:text-xl"
               style={{
-                fontSize: "1.25rem",
                 marginBottom: "var(--space-sm)",
                 textTransform: "none",
                 fontFamily: "var(--font-sans)",
@@ -481,6 +443,7 @@ const CashPage = () => {
               ].map((item, idx) => (
                 <li
                   key={idx}
+                  className="text-sm"
                   style={{
                     marginBottom: "var(--space-xs)",
                     paddingLeft: "1.2rem",
@@ -501,29 +464,6 @@ const CashPage = () => {
                 </li>
               ))}
             </ul>
-            <a
-              href="#"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "12px 24px",
-                borderRadius: "var(--radius-pill)",
-                fontSize: "0.75rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                fontWeight: 600,
-                textDecoration: "none",
-                cursor: "pointer",
-                transition: "all 0.2s",
-                backgroundColor: "transparent",
-                color: "var(--c-text-primary)",
-                border: "1px solid var(--c-border)",
-                marginTop: "var(--space-sm)",
-              }}
-            >
-              View bank coverage
-            </a>
           </div>
 
           <div
@@ -544,7 +484,7 @@ const CashPage = () => {
                   key={idx}
                   style={{
                     fontFamily: "var(--font-mono)",
-                    fontSize: "0.85em",
+                    fontSize: "0.75em",
                     textTransform: "uppercase",
                     letterSpacing: "0.05em",
                     color: "var(--c-text-primary)",
@@ -563,13 +503,12 @@ const CashPage = () => {
 
       <section>
         <h2
+          className="text-lg md:text-xl mt-16 md:mt-24"
           style={{
             fontFamily: "var(--font-mono)",
             fontWeight: 400,
             color: "var(--c-text-primary)",
-            fontSize: "1.25rem",
             marginBottom: "var(--space-lg)",
-            marginTop: "120px",
             borderBottom: "1px solid var(--c-border)",
             paddingBottom: "var(--space-xs)",
             textTransform: "uppercase",
@@ -579,17 +518,12 @@ const CashPage = () => {
           05. Outcomes
         </h2>
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "var(--space-lg)",
-            alignItems: "start",
-          }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 items-start"
         >
           <div>
             <h3
+              className="text-lg md:text-xl"
               style={{
-                fontSize: "1.25rem",
                 marginBottom: "var(--space-sm)",
                 textTransform: "none",
                 fontFamily: "var(--font-sans)",
@@ -598,7 +532,7 @@ const CashPage = () => {
             >
               Close with confidence.
             </h3>
-            <p style={{ color: "var(--c-text-secondary)" }}>
+            <p className="text-sm md:text-base" style={{ color: "var(--c-text-secondary)" }}>
               Stop chasing discrepancies at month-end. Let automation handle the
               matching.
             </p>
@@ -612,6 +546,7 @@ const CashPage = () => {
               ].map((item, idx) => (
                 <li
                   key={idx}
+                  className="text-sm"
                   style={{
                     marginBottom: "var(--space-xs)",
                     paddingLeft: "1.2rem",
@@ -637,14 +572,13 @@ const CashPage = () => {
       </section>
 
       <footer
+        className="flex flex-col md:flex-row justify-between items-center md:items-start gap-4 text-center md:text-left"
         style={{
           padding: "var(--space-xl) 0 var(--space-md)",
           borderTop: "1px solid var(--c-border)",
           marginTop: "var(--space-xl)",
           fontFamily: "var(--font-mono)",
           fontSize: "0.7rem",
-          display: "flex",
-          justifyContent: "space-between",
           color: "var(--c-text-secondary)",
         }}
       >
